@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Trivia
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um aplicativo de quiz interativo desenvolvido em React. Ele permite que os usuários sorteiam categorias, escolham perguntas baseadas na dificuldade e respondam dentro de um tempo específico.
 
-## Available Scripts
+## Funcionalidades
 
-In the project directory, you can run:
+- **Roda de Categorias**: Uma animação de roda que permite ao usuário selecionar uma categoria de perguntas.
+- **Lista de Perguntas**: Exibe perguntas filtradas por nível de dificuldade (Fácil, Médio, Difícil).
+- **Perguntas Individuais**: Mostra uma pergunta com um temporizador e uma animação de fundo.
+- **Transições Suaves**: Animações de transição entre páginas usando `framer-motion`.
+- **Responsivo**: Design adaptável para diferentes tamanhos de tela.
 
-### `npm start`
+## Tecnologias Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React**: Biblioteca JavaScript para construção da interface do usuário.
+- **Framer Motion**: Biblioteca para animações e transições.
+- **CSS/SCSS**: Estilização do aplicativo.
+- **React Router**: Navegação entre páginas no aplicativo.
+- **SVG**: Elementos gráficos vetoriais para animações de fundo.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Como Executar o Projeto
 
-### `npm test`
+### Pré-requisitos
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v16 ou superior)
+- npm ou yarn
 
-### `npm run build`
+### Passos para Configuração
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   cd nome-do-repositorio
+2. **Instale as dependências**:
+   ```bash
+   npm install
+3. **Inicie o servidor de desenvolvimento**:
+   ```bash
+   npm start
+4. **Acesse o aplicativo**:
+   Abra o navegador e acesse http://localhost:3000.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Estrutura do Projeto
+  ```bash
+  src/
+  ├── components/          # Componentes reutilizáveis
+  │   ├── CategoryWheel.js # Roda de seleção de categorias
+  │   ├── QuestionList.js  # Lista de perguntas por categoria
+  │   ├── Question.js      # Tela de pergunta individual
+  ├── utils/               # Dados e utilitários
+  │   ├── Questions.js     # Banco de dados de perguntas
+  │   ├── App.scss         # Estilos globais
+  ├── App.js               # Componente principal
+  ├── index.js             # Ponto de entrada do aplicativo
+  public/
+  ├── images/              # Imagens e SVGs
+  ├── index.html           # Template HTML
+  ```
+### Personalização
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Para adicionar mais perguntas, edite o arquivo src/utils/Questions.js. O formato das perguntas é**:
+   ```javascript
+   { level: "1", question: "Pergunta?", answer: "Resposta" }
+2. **Alterar Animações**:
+   As animações são controladas pelo framer-motion. Para alterá-las, edite as propriedades pageVariants e pageTransition no arquivo App.js.
