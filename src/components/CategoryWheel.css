@@ -23,7 +23,6 @@
   justify-content: center;
   align-items: center;
   gap: 10px; /* Space between boxes */
-  border: 2px solid #ccc; /* Visualize the container */
 }
 
 .box {
@@ -35,7 +34,7 @@
   font-size: 1rem;
   font-weight: bold;
   color: white;
-  background-color: #dc404d;
+  background-color: #cd1e3b;
   border: 2px solid #fff;
   border-radius: 8px;
   transition: transform 0.3s ease, background-color 0.3s ease;
@@ -43,14 +42,15 @@
 
 .edge-box {
   font-size: 1.2rem;
-  background-color: #db7880;
+  background-color: #e03a56;
   transform: scale(0.9);
 }
 
 /* Style the middle box differently */
 .middle-box {
   font-size: 1.2rem;
-  background-color: #d50022;
+  background-color: #E0E1E0;
+  color: #AF0421;
   transform: scale(1.1);
 }
 
@@ -75,8 +75,8 @@
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  background: linear-gradient(to right, #d50022, #d50022);
-  color: white;
+  background: linear-gradient(to right, #E0E1E0, #E0E1E0);
+  color: #AF0421;
   border: none;
   border-radius: 8px;
   transition: background 0.3s ease, transform 0.2s ease;
@@ -84,15 +84,16 @@
 }
 
 .spin-button:hover {
-  background: linear-gradient(to right, #ee2647, #ee2647);
+  background: linear-gradient(to right, #AF0421, #AF0421);
   transform: scale(1.08);
+  color: white;
 }
 
 .selected-category {
   margin-top: 60px;
   font-size: 5rem;
   font-weight: bold;
-  color: #2c3e50;
+  color: #E0E1E0;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   opacity: 0;
   transform: scale(0.5);
@@ -120,7 +121,7 @@
   margin-top: 10px;
   padding: 12px 24px;
   font-size: 1.1rem;
-  background-color: black;
+  background-color: #AF0421;
   color: white;
   border: none;
   border-radius: 8px;

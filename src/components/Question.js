@@ -4,11 +4,11 @@ import "./Question.css";
 function Question({ question, onBack, onAnswer }) {
   const getTimerDuration = (level) => {
     switch (level) {
-      case "Fácil":
+      case "1":
         return 5000; 
-      case "Médio":
+      case "2":
         return 10000; 
-      case "Difícil":
+      case "3":
         return 15000; 
       default:
         return 10000; 
@@ -56,7 +56,7 @@ function Question({ question, onBack, onAnswer }) {
       )}
       
       <button className="back-button" onClick={onBack}>
-        Voltar
+      ◄◄
       </button>
     </div>
   );

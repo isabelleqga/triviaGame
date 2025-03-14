@@ -6,7 +6,7 @@ function CategoryWheel({ categories, onSelectCategory }) {
   const [spinning, setSpinning] = useState(false); // Track if the wheel is spinning
   const [showButton, setShowButton] = useState(false); // Show the "Proceed" button
   const intervalRef = useRef(null); // Ref to store the interval ID
-  const timeoutRef = useRef(null); // Ref to store the timeout ID
+  const targetIndexRef = useRef(null); // Ref to store the target index
 
   // Function to get the category for a specific box
   const getCategoryForBox = (boxIndex) => {
@@ -21,8 +21,12 @@ function CategoryWheel({ categories, onSelectCategory }) {
     setSpinning(true);
     setShowButton(false);
 
-    let intervalDuration = 10; // Start with a fast interval (100ms)
-    const slowdownDuration = 5000; // Total duration of the spin (10 seconds)
+    // Generate a random target index
+    const randomIndex = Math.floor(Math.random() * categories.length);
+    targetIndexRef.current = randomIndex;
+
+    let intervalDuration = 50; // Start with a fast interval (50ms)
+    const slowdownDuration = 5000; // Total duration of the spin (5 seconds)
     const startTime = Date.now();
 
     const spin = () => {
@@ -30,7 +34,7 @@ function CategoryWheel({ categories, onSelectCategory }) {
       const progress = elapsedTime / slowdownDuration; // Progress from 0 to 1
 
       // Gradually increase the interval duration to slow down the spin
-      intervalDuration = 50 + progress * 150; // Increase from 100ms to 1000ms
+      intervalDuration = 50 + progress * 200; // Increase from 50ms to 250ms
 
       // Update the selected category
       setSelectedIndex((prevIndex) => (prevIndex + 1) % categories.length);
@@ -39,6 +43,8 @@ function CategoryWheel({ categories, onSelectCategory }) {
       if (elapsedTime < slowdownDuration) {
         intervalRef.current = setTimeout(spin, intervalDuration);
       } else {
+        // Ensure the wheel lands on the target index
+        setSelectedIndex(targetIndexRef.current);
         setSpinning(false);
         setShowButton(true);
       }
@@ -48,11 +54,10 @@ function CategoryWheel({ categories, onSelectCategory }) {
     spin();
   };
 
-  // Cleanup the interval and timeout when the component unmounts
+  // Cleanup the interval when the component unmounts
   useEffect(() => {
     return () => {
       if (intervalRef.current) clearTimeout(intervalRef.current);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
 
@@ -80,7 +85,7 @@ function CategoryWheel({ categories, onSelectCategory }) {
       <div className="left-side">
         <div className="controls-container">
           <button onClick={startSpinning} disabled={spinning} className="spin-button">
-            {spinning ? "Spinning..." : "Spin the Wheel"}
+            {spinning ? "Rodando..." : "Sortear"}
           </button>
 
           {showButton && (
@@ -92,7 +97,7 @@ function CategoryWheel({ categories, onSelectCategory }) {
                 className="proceed-button"
                 onClick={() => onSelectCategory(categories[selectedIndex])}
               >
-                Proceed
+                ►►
               </button>
             </>
           )}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./QuestionList.css";
 
-function QuestionList({ questions, onSelectQuestion, onBack }) {
+function QuestionList({ category, questions, onSelectQuestion, onBack }) {
   const [filterLevel, setFilterLevel] = useState("all");
 
   const filteredQuestions =
@@ -12,9 +12,9 @@ function QuestionList({ questions, onSelectQuestion, onBack }) {
   return (
     <div className="question-list">
       <div className="sidebar">
-        <h2>Questions</h2>
+        <h2>{category}</h2>
         <button className="back-button" onClick={onBack}>
-          Back to Categories
+          ◄◄
         </button>
         <div className="filter-options">
           <label>
@@ -31,9 +31,9 @@ function QuestionList({ questions, onSelectQuestion, onBack }) {
             <input
               type="radio"
               name="level"
-              value="Fácil"
-              checked={filterLevel === "Fácil"}
-              onChange={() => setFilterLevel("Fácil")}
+              value="1"
+              checked={filterLevel === "1"}
+              onChange={() => setFilterLevel("1")}
             />
             Fácil
           </label>
@@ -41,9 +41,9 @@ function QuestionList({ questions, onSelectQuestion, onBack }) {
             <input
               type="radio"
               name="level"
-              value="Médio"
-              checked={filterLevel === "Médio"}
-              onChange={() => setFilterLevel("Médio")}
+              value="2"
+              checked={filterLevel === "2"}
+              onChange={() => setFilterLevel("2")}
             />
             Médio
           </label>
@@ -51,9 +51,9 @@ function QuestionList({ questions, onSelectQuestion, onBack }) {
             <input
               type="radio"
               name="level"
-              value="Difícil"
-              checked={filterLevel === "Difícil"}
-              onChange={() => setFilterLevel("Difícil")}
+              value="3"
+              checked={filterLevel === "3"}
+              onChange={() => setFilterLevel("3")}
             />
             Difícil
           </label>
@@ -61,19 +61,25 @@ function QuestionList({ questions, onSelectQuestion, onBack }) {
       </div>
 
       <div className="question-grid">
-        {filteredQuestions.map((question, index) => (
-          <div key={index} className="question-card">
-            <p>
-              <strong>Level:</strong> {question.level}
-            </p>
-            <div className="question-wrapper">
-              <p className="question-text">
-                <span>{question.question}</span>
+        {filteredQuestions.length > 0 ? (
+          filteredQuestions.map((question, index) => (
+            <div key={index} className="question-card">
+              <p>
+                Nível <strong>{question.level}</strong>
               </p>
+              <div className="question-wrapper">
+                <p className="question-text">
+                  <span>{question.question}</span>
+                </p>
+              </div>
+              <button onClick={() => onSelectQuestion(question)}>Responder</button>
             </div>
-            <button onClick={() => onSelectQuestion(question)}>Answer</button>
+          ))
+        ) : (
+          <div className="question-card no-questions">
+            <p>Sem perguntas por aqui!</p>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
